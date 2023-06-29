@@ -52,9 +52,10 @@ public abstract class BasePage {
         try {
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Integer.valueOf(ConfigurationReader.getProperty("SHORT_WAIT")));
             wait.until(ExpectedConditions.invisibilityOf(loaderMask));
+            logger.info("Loader mask gone");
         } catch (Exception e) {
             logger.error("Loader mask doesn't present.");
-            System.out.println("Loader mask doesn't present.");
+            logger.error(e);
         }
     }
 

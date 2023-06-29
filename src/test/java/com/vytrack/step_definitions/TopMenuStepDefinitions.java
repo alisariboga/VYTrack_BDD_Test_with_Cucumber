@@ -2,6 +2,7 @@ package com.vytrack.step_definitions;
 
 import com.vytrack.utilities.Pages;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 public class TopMenuStepDefinitions {
     Pages pages = new Pages();
@@ -12,7 +13,8 @@ public class TopMenuStepDefinitions {
     }
 
     @Then("user name should be {string}")
-    public void user_name_should_be(String name) {
+    public void user_name_should_be(String expected) {
+        Assert.assertEquals(expected, pages.dashboardPage().getUserMenuName());
 
     }
 }

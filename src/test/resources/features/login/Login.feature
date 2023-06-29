@@ -52,13 +52,43 @@ Feature: Login
 
 
     Examples:
-      | username        |  | password    | name              |
-      | user187         |  | UserUser123 | Jerel Vandervort  |
-      | user200         |  | UserUser123 | Lonzo Leuschke    |
-      | storemaneger52  |  | UserUser123 | Roma Medhurst     |
-      | storemaneger66  |  | UserUser123 | Carlos Ernser     |
-      | salesmaneger125 |  | UserUser123 | Clevenland Heller |
-      | salesmaneger140 |  | UserUser123 | Jameson Paucek9    |
+      | username        |  | password    | name       |
+      | user157         |  | UserUser123 | Alex Jones |
+      | user159         |  | UserUser123 | Alex Jones |
+      | storemanager258 |  | UserUser123 | John Doe   |
+      | storemanager260 |  | UserUser123 | John Doe   |
+      | salesmanager110 |  | UserUser123 | John Doe   |
+      | salesmanager85  |  | UserUser123 | John Doe   |
+      | Driver1         |  | UserUser123 | Tom Smith  |
+      | SalesRep2       |  | UserUser123 | Hal Norman |
+
+  @login_with_outline_3
+  Scenario Outline: page titles with different users
+    Given user logs in as a "<user_type>"
+    Then user navigates to "<tab>" and "<module>"
+    Then the page title should be "<title>"
+
+    Examples:
+      | user_type     | tab        | module          | title                                                              |
+      | driver        | Fleet      | Vehicles        | Car - Entities - System - Car - Entities - System                  |
+      | driver        | Fleet      | Vehicles Model  | Vehicles Model - Entities - System - Car - Entities - System       |
+      | driver        | Customers  | Accounts        | Accounts - Customers                                               |
+      | driver        | Customers  | Contacts        | Contacts - Customers                                               |
+      | driver        | Activities | Calendar Events | Calendar Events - Activities                                       |
+      | driver        | System     | Jobs            | Jobs - System                                                      |
+      | sales manager | Fleet      | Vehicles        | All - Car - Entities - System - Car - Entities - System            |
+      | sales manager | Fleet      | Vehicles        | All - Vehicles Model - Entities - System - Car - Entities - System |
+      | sales manager | Customers  | Vehicles        | All - Accounts - Customers                                         |
+      | sales manager | Customers  | Vehicles        | All - Contacts - Customers                                         |
+      | sales manager | Activities | Vehicles        | All - Calendar Events - Activities                                 |
+      | sales manager | System     | Vehicles        | All - Jobs - System                                                |
+      | store manager | Fleet      | Vehicles        | All - Car - Entities - System - Car - Entities - System            |
+      | store manager | Fleet      | Vehicles Model  | All - Vehicles Model - Entities - System - Car - Entities - System |
+      | store manager | Fleet      | Vehicles        | All - Accounts - Customers                                         |
+      | store manager | Fleet      | Vehicles        | All - Contacts - Customers                                         |
+      | store manager | Fleet      | Vehicles        | All - Calendar Events - Activities                                 |
+      | store manager | Fleet      | Vehicles        | All - Jobs - System                                                |
+
 
 
 

@@ -67,7 +67,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                        <runOrder>alphabetical</runOrder>
                     <includes>
+                        <include>**/FailedRunner.java</include>
                         <include>**/CukesRunner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
